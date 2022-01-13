@@ -19,8 +19,9 @@ http.createServer(function(request, response){
             response.writeHead(200, {"Content-type":"text/html"})
             response.write(data.toString())
         }
+        response.end()
     }
-    response.end()
+    
 
 }).listen(port)
 
