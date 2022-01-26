@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Library Page</title>
+    <title>Game Library Entry Page</title>
 </head>
 <body>
     <h2>Welcom to Game Entry Page</h2>
+    <nav>
+        <a href="#">Game Entry</a>
+        <a href="gamelist.html">Game List</a>
+     </nav>
+    <form action="/saveGame " method="post">
+        <span id="err" style="color: red;"></span>
+        <br>
+        <label for="game">Enter Game Title Here</label>
+        <br>
+        <input type="text" name="game" id="GameTitle">
+        <br>
+        <button type="submit">Enter Game Entry</button>
+    </form>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Library List Page</title>
+</head>
+<body>
+    <div id = "container">
+            <h2>Game List</h2>
+            <nav>
+                <a href="index.html">Game Entry</a>
+                <a href="#">Game List</a>
+            </nav>
+            <p>
+                list games here
+            </p>
+        <script>
+            fetch('/getData').then(function(games){
+                games.json().then(function(thegames){
+                    console.log(thegames)
+
+                    for(let game of thegames.game){
+                        var gameElement = document.createElement('p')
+                        gameElement.innerHTML = game.game
+                        document.getElementById('container').appendChild(gameElement)
+
+                        var deleteButton = document.createElement('button')
+                        deleteButton.innerText = "Delete Game"
+                        deleteButton.addEventListener('click', function deleteGame(){
+                            location.reload()
+                            fetch('deleteGame', {
+                                method:"POST",
+                                headers:{
+                                    "Content-Type":"application/json"
+                                },
+                                body:JSON.stringify({
+                                    _id:game._id
+                                })
+                            })
+                        })
+                        gameElement.appendChild(deleteButton)
+                    }
+                })
+            })
+        </script>
+    </div>
+</body>
+</html>
