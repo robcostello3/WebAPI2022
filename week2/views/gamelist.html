@@ -16,6 +16,11 @@
             <p>
                 list games here
             </p>
+            <style>
+                button{
+                    margin-left: 10px;
+                }
+            </style>
         <script>
             fetch('/getData').then(function(games){
                 games.json().then(function(thegames){
