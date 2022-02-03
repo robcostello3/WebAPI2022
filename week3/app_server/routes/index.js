@@ -6,5 +6,8 @@ router.get('/', ctrlLocations.home)
 router.get('/contact', ctrlLocations.contact)
 router.get('/about', ctrlLocations.about)
 router.get('/profile', ctrlLocations.profile)
+router.get('/dataTest', ctrlLocations.dataTest)
+
+router.post('/testdata')
 
 module.exports = router

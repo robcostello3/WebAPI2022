@@ -33,10 +33,20 @@ var about = function(req, res){
 
 var profile = function(req, res){
     res.render('profile', {name:"robert",
-email:"robert@email.neit",
-phonenumber:"401-442-7761",
-address:"1 New England Tech Blvd, East Greenwich, RI",
-job:"Game Programmer"})
+        email:"robert@email.neit",
+        phonenumber:"4014427761",
+        address:"1 New England Tech Blvd, East Greenwich, RI",
+        job:"Game Programmer",
+    })
+}
+
+var dataTest = function(req, res){
+    res.render('dataEntry', {})
+}
+
+var testData = function(req,res){
+    console.log(req.body)
+    res.render('/profile') //, req.body)
 }
 
 
@@ -44,5 +54,7 @@ module.exports = {
     home,
     contact,
     about,
-    profile
+    profile,
+    dataTest,
+    testData,
 }
