@@ -60,11 +60,11 @@
             var data = {
                 'author':document.querySelector('input[name="author"]').value,
                 'rating':document.querySelector('input[name="rating"]').value,
-                'review':document.querySelector('input[name="review"]').value
+                'review':document.querySelector('input[name="reviewText"]').value
             }
 
             var verbfield = document.querySelector('select[name="verb"]')
-            var verb = verbfield.options(verbfield.selectedIndex).value
+            var verb = verbfield.options[verbfield.selectedIndex].value
             var resource = document.querySelector('input[name="resource"]').value
             
             var results = document.querySelector('textarea[name="results"]')
@@ -80,6 +80,10 @@
                 headers:myHeaders,
                 mode:'cors',
                 cache:'default'
+            }
+
+            if(['POST', 'PUT'].indexOf(verb)>-1){
+                myInit.body = JSON.stringify(data)
             }
 
             var myrequest = new Request(url, myInit)
