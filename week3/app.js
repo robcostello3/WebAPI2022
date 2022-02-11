@@ -43,7 +43,9 @@ app.set('view engine', 'hbs')
 
 app.use('/', appRouter)
 
-//app.post('/testData', )
+//app.post('/testData', , function(req, res){
+//  res.render(200, "/profile", req.body)
+//})
 
 app.listen(3000, function(){
     console.log("Listening on port 3000")
