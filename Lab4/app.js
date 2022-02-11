@@ -70,7 +70,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.post('/testData', function(req, res){
-  res.render(200, "/profile", req.body)
+  res.render(200, "/table", req.body)
 })
 
 module.exports = app;
