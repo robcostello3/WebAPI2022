@@ -20,7 +20,14 @@ app.engine('hbs', exphbs.engine({
         for(let j = 0; j < size; j++){
           var color = ((1<<24)*Math.random()|0).toString(16);
           let heading = document.createElement('th');
+          let brk = document.createElement('br');
           heading.innerHTML = color;
+          heading.appendChild(brk);
+          let spn = document.createElement('span')
+          spn.innerHTML = color;
+          spn.style.color = ffffff;
+          heading.appendChild(spn);
+          heading.style.backgroundColor = color;
           row.appendChild(heading);
 
         }
