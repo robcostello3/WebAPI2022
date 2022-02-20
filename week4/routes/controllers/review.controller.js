@@ -23,6 +23,18 @@ module.exports.reviewsReadOne = function(req, res){
     debug('Reading one review')
     console.log('Reading one review')
     
+    if(req.params && req.params.reviewid){
+
+        Review.findById(req.params.reviewid).exec().then(
+            function(result){
+                sendJSONresponse(res,200,result)
+            }
+        ).catch(function(err){
+            sendJSONresponse(res,404,err)
+        })
+    }else{
+        sendJSONresponse(res, 404, {"message":"Review not found."})
+    }
 }
 
 module.exports.reviewCreate = function(req, res){
@@ -45,7 +57,23 @@ module.exports.reviewCreate = function(req, res){
 module.exports.reviewUpdateOne = function(req, res){
     debug('Update one review')
     console.log('Update one review')
-    
+    if(!req.params.reviewid){
+        sendJSONresponse(res, 404, {"message":"Not found...request id required"})
+        return
+    }
+
+    Review.findById(req.params.reviewid).exec().then(
+        function(reviewData){
+            reviewData.author = req.body.author;
+            reviewData.rating = req.body.rating;
+            reviewData.reviewText = req.body.reviewText;
+            return reviewData.save()
+        }
+    ).then(function(data){
+        sendJSONresponse(res,200, data)
+    }).catch(function(err){
+        sendJSONresponse(res, 400, err)
+    })
 }
 
 module.exports.reviewDeleteOne = function(req, res){

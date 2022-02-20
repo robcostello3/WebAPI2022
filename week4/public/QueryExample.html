@@ -17,10 +17,10 @@
 
     <p>Verb/HTTP Method</p>
     <select name="verb">
-        <option value="GET"></option>
-        <option value="POST"></option>
-        <option value="PUT"></option>
-        <option value="DELETE"></option>
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
     </select>
     <br>
     <br>
@@ -62,7 +62,7 @@
                 'rating':document.querySelector('input[name="rating"]').value,
                 'review':document.querySelector('input[name="reviewText"]').value
             }
-
+            console.log(data)
             var verbfield = document.querySelector('select[name="verb"]')
             var verb = verbfield.options[verbfield.selectedIndex].value
             var resource = document.querySelector('input[name="resource"]').value
@@ -84,11 +84,13 @@
 
             if(['POST', 'PUT'].indexOf(verb)>-1){
                 myInit.body = JSON.stringify(data)
+                console.log(myInit)
             }
 
             var myrequest = new Request(url, myInit)
 
             fetch(myrequest).then(function(response){
+                console.log(response)
                 var contentType = response.headers.get('content-type')
                 if(contentType && contentType.includes('application/json')){
                     return response.text()

@@ -2,13 +2,13 @@ var mongoose = require('mongoose')
 
 var reviewSchema = new mongoose.Schema({
     author:String,
+    reviewText:String,
     rating:{
         type:Number,
         require:true,
         min:0,
         max:5
     },
-    reviewText:String,
     createdOn:{
         type:Date,
         'default': Date.now
