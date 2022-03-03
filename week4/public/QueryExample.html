@@ -38,9 +38,15 @@
     Review <input type="text" name="reviewText">
     <br>
     <br>
-    <button>Make Request</button>
+    <button id="MakeRequest">Make Request</button>
     <br>
     <h2>Results</h2>
+    <br>
+    <button id="Sorting">Sort</button>
+    <br>
+    <button id="Searching">Search</button>
+    <input id="Searchvalue">
+    <br>
     <input type="text" name="query" readonly size="70">
     <br>
     <textarea name="results" readonly></textarea>
@@ -53,14 +59,20 @@
         <option value="5"></option>
     </datalist>
     <script>
-        var callBtn = document.querySelector('button')
+        var callBtn = document.querySelector('#MakeRequest')
         callBtn.addEventListener('click', makeCall)
+
+        var SortBtn = document.querySelector('#Sorting')
+        SortBtn.addEventListener('click', sortRes)
+
+        var SearchBtn = document.querySelector('#Searching')
+        SearchBtn.addEventListener('click', searchRes)
 
         function makeCall(){
             var data = {
                 'author':document.querySelector('input[name="author"]').value,
                 'rating':document.querySelector('input[name="rating"]').value,
-                'review':document.querySelector('input[name="reviewText"]').value
+                'reviewText':document.querySelector('input[name="reviewText"]').value
             }
             console.log(data)
             var verbfield = document.querySelector('select[name="verb"]')
@@ -104,6 +116,16 @@
             }).catch(function(err){
                 console.log(err)
             })
+        }
+
+        function searchRes(){
+            var results = document.querySelector('textarea[name="results"]')
+
+        }
+
+        function sortRes(){
+            var results = document.querySelector('textarea[name="results"]')
+
         }
     </script>
 </body>

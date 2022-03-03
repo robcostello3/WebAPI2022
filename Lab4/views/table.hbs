@@ -1,7 +1,42 @@
+<h1>Hi</h1>
+
 <!--selection-->
-<table>
+<!--<table>
     <tbody id="tbody">
         
         {{CreateTable selection}}
     </tbody>
 </table>
+
+<script>
+CreateTable(selection){
+
+      for(let i = 0; i < size; i++){
+        let row = document.createElement('tr');
+        for(let j = 0; j < size; j++){
+          var color = ((1<<24)*Math.random()|0).toString(16);
+          let heading = document.createElement('th');
+          let brk = document.createElement('br');
+          heading.innerHTML = color;
+          heading.appendChild(brk);
+          let spn = document.createElement('span')
+          spn.innerHTML = color;
+          spn.style.color = ffffff;
+          heading.appendChild(spn);
+          heading.style.backgroundColor = color;
+          row.appendChild(heading);
+
+        }
+        document.getElementById('tbody').appendChild(row);
+      }
+      
+
+      //<tr>
+        //    <td style="background-color: #ffffff" id="table11">ffffff<br/><span style="color: #ffffff" id="span11">ffffff</span></td>
+      //</tr>
+
+      
+
+    }
+
+</script>-->

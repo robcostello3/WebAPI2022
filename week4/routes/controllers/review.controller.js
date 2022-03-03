@@ -6,8 +6,6 @@ function sendJSONResponse(res, status, content){
     res.json(content)
 }
 
-
-
 module.exports.readReviewsAll = function(req, res){
     debug('Getting all reviews')
     console.log('Getting all reviews')
@@ -16,7 +14,6 @@ module.exports.readReviewsAll = function(req, res){
     }).catch(function(err){
         sendJSONResponse(res, 404, err)
     })
-
 }
 
 module.exports.reviewsReadOne = function(req, res){
