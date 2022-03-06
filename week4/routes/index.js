@@ -8,6 +8,7 @@ router.get('/reviews/:reviewid', ctrlReviews.reviewsReadOne)
 router.post('/reviews', ctrlReviews.reviewCreate)
 router.put('/reviews/:reviewid', ctrlReviews.reviewUpdateOne)
 router.delete('/reviews/:reviewid', ctrlReviews.reviewDeleteOne)
+router.get('/QueryExample', ctrlReviews.queryPage)
 
 
 /* GET home page. */
