@@ -73,6 +73,10 @@ module.exports.reviewUpdateOne = function(req, res){
     })
 }
 
+module.exports.queryPage = function(req, res){
+    res.render("QueryExample", {title: "Query"})
+}
+
 module.exports.reviewDeleteOne = function(req, res){
     debug('Delete one review')
     console.log('Delete one review')
