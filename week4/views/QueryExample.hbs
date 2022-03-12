@@ -120,11 +120,76 @@
 
         function searchRes(){
             var results = document.querySelector('textarea[name="results"]')
+            var url = `http://localhost:3000/api/v1/reviews/select`
+
+            var verbfield = document.querySelector('select[name="verb"]')
+            var verb = verbfield.options[verbfield.selectedIndex].value
+
+            var myHeaders = new Headers()
+            myHeaders.set('Content-Type', 'application/json')
+
+            var myInit = {
+                method:verb,
+                headers:myHeaders,
+                mode:'cors',
+                cache:'default'
+            }
+
+            var myrequest = new Request(url, myInit)
+
+            fetch(myrequest).then(function(response){
+                console.log(response)
+                var contentType = response.headers.get('content-type')
+                if(contentType && contentType.includes('application/json')){
+                    return response.text()
+                }
+                if(response.status === 204){
+                    return 'Delete'
+                }
+                throw new TypeError("This is not JSON")
+            }).then(function(jsonText){
+                results.value = jsonText
+            }).catch(function(err){
+                console.log(err)
+            })
 
         }
 
         function sortRes(){
             var results = document.querySelector('textarea[name="results"]')
+            var url = `http://localhost:3000/api/v1/reviews/sort`
+            url
+
+            var verbfield = document.querySelector('select[name="verb"]')
+            var verb = verbfield.options[verbfield.selectedIndex].value
+
+            var myHeaders = new Headers()
+            myHeaders.set('Content-Type', 'application/json')
+
+            var myInit = {
+                method:verb,
+                headers:myHeaders,
+                mode:'cors',
+                cache:'default'
+            }
+
+            var myrequest = new Request(url, myInit)
+
+            fetch(myrequest).then(function(response){
+                console.log(response)
+                var contentType = response.headers.get('content-type')
+                if(contentType && contentType.includes('application/json')){
+                    return response.text()
+                }
+                if(response.status === 204){
+                    return 'Delete'
+                }
+                throw new TypeError("This is not JSON")
+            }).then(function(jsonText){
+                results.value = jsonText
+            }).catch(function(err){
+                console.log(err)
+            })
 
         }
     </script>

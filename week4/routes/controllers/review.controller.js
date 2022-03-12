@@ -16,6 +16,66 @@ module.exports.readReviewsAll = function(req, res){
     })
 }
 
+module.exports.reviewSorted = function(req, res){
+    debug('Getting all reviews')
+    console.log('Getting all reviews')
+    Review.find().exec().then(function(results){
+
+        var temp = results
+        const dict = {"0" : parseInt(results[0].rating)}
+
+        for(var x = 1; x < temp.length; x++){
+            console.log(temp[x].rating)
+            dict[x] = parseInt(temp[x].rating)
+        }
+
+        var endR = {0 : "test"}
+        var endRctr = 0
+        for(var y = 5; y > 0; y--){
+            console.log("y = " + y)
+            for(var x = 0; x < temp.length; x++){
+                console.log(dict[x])
+                if(dict[x] == y){
+                    console.log(temp.length)
+                    console.log(temp[x])
+                    endR[endRctr] = temp[x]
+                    console.log(endR[0])
+                    endRctr = endRctr + 1
+                }
+            }
+        }
+
+        sendJSONresponse(res, 200, endR)
+
+    }).catch(function(err){
+        sendJSONResponse(res, 404, err)
+    })
+}
+
+module.exports.reviewSelected = function(req, res){
+    debug('Getting all reviews')
+    console.log('Getting all reviews')
+    Review.find().exec().then(function(results){
+
+        var temp = results
+
+        var endR = {0 : "test"}
+
+        var k;
+        for (k = 0; k < temp.length; ++k){
+            if (results[k].author == req) {
+                endR = results[k]
+                break;
+              }
+        }
+
+        sendJSONresponse(res, 200, endR)
+
+    }).catch(function(err){
+        sendJSONResponse(res, 404, err)
+    })
+}
+
 module.exports.reviewsReadOne = function(req, res){
     debug('Reading one review')
     console.log('Reading one review')

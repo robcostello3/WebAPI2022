@@ -5,6 +5,8 @@ var ctrlReviews = require('./controllers/review.controller')
 
 router.get('/reviews', ctrlReviews.readReviewsAll)
 router.get('/reviews/:reviewid', ctrlReviews.reviewsReadOne)
+router.get('/reviews/sort', ctrlReviews.reviewSorted)
+router.get('/reviews/select', ctrlReviews.reviewSelected)
 router.post('/reviews', ctrlReviews.reviewCreate)
 router.put('/reviews/:reviewid', ctrlReviews.reviewUpdateOne)
 router.delete('/reviews/:reviewid', ctrlReviews.reviewDeleteOne)
